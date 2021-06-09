@@ -312,4 +312,8 @@
   .hero {
     transform: scale(0.6);
   }
+
+  .right-side-inventory {
+    overflow: scroll;
+  }
 }
