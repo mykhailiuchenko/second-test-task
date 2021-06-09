@@ -217,7 +217,6 @@
   grid-template-rows: repeat(10, 64px);
   border: 1px solid rgba(255, 255, 255, 0.16);
   margin-bottom: 32px;
-  overflow: auto;
 }
 
 .right-side-inventory__item {
@@ -277,6 +276,9 @@
 @media (max-height: 966px) {
   .hero {
     transform: scale(0.8);
+  }
+  .right-side-inventory {
+    overflow-x: auto;
   }
 }
 
