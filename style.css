@@ -1,3 +1,7 @@
+:root {
+  --left-side-slider: 0;
+}
+
 .wrapper {
   position: fixed;
   width: 100%;
@@ -36,6 +40,7 @@
 }
 
 .hero__left-side {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,7 +50,12 @@
   border-radius: 10px;
 }
 
+.left-side-wrapper {
+  position: relative;
+}
+
 .left-side-button {
+  z-index: 1;
   border: none;
   width: 88px;
   height: 112px;
@@ -58,13 +68,79 @@
   fill: rgba(188, 99, 30, 1);
 }
 
+.left-side-button:hover::before {
+  position: absolute;
+  content: "";
+  left: -2px;
+  top: 7px;
+  width: 100%;
+  height: 85%;
+  border-radius: 10px;
+  border-left: 2px solid rgba(188, 99, 30, 1);
+  border-right: 2px solid rgba(188, 99, 30, 1);
+  background-image: linear-gradient(
+      to right,
+      rgba(188, 99, 30, 0.2) 0,
+      rgba(188, 99, 30, 0.01) 50%
+    ),
+    linear-gradient(
+      to left,
+      rgba(188, 99, 30, 0.2) 0,
+      rgba(188, 99, 30, 0.01) 50%
+    ),
+    radial-gradient(rgba(65, 38, 31, 0.2) 10%, rgba(75, 71, 74, 0.2) 40%);
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+  filter: opacity(0.5);
+}
+
+.left-side-button:hover::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 85%;
+}
+
 .left-side-button > svg {
   fill: inherit;
 }
 
 .left-side-button:nth-of-type(1) {
   position: relative;
-  border-radius: 5px;
+  border-top: 2px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.16);
+}
+
+.left-side-button:nth-of-type(2) {
+  position: relative;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.16);
+}
+
+.left-side-button:nth-of-type(3) {
+  position: relative;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.16);
+}
+
+.left-side-button_active {
+  fill: rgba(188, 99, 30, 1);
+}
+
+.left-side-slider {
+  position: absolute;
+  top: 10px;
+  left: -2px;
+  right: 0;
+  bottom: 9px;
+  z-index: 0;
+}
+
+.left-side-rect {
+  height: 29%;
+  width: 88px;
+  border-radius: 10px;
+  border-left: 2px solid rgba(188, 99, 30, 1);
+  border-right: 2px solid rgba(188, 99, 30, 1);
   background-image: linear-gradient(
       to right,
       rgba(188, 99, 30, 0.3) 0,
@@ -76,35 +152,9 @@
       rgba(188, 99, 30, 0.01) 50%
     ),
     radial-gradient(rgba(65, 38, 31, 0.3) 10%, rgba(75, 71, 74, 0.3) 40%);
-  height: 84px;
-}
-
-.left-side-button:nth-of-type(1)::before {
-  position: absolute;
-  content: "";
-  left: -2px;
-  top: 7px;
-  width: 100%;
-  height: 85%;
-  border-left: 2px solid rgba(188, 99, 30, 1);
-  border-right: 2px solid rgba(188, 99, 30, 1);
-}
-
-.left-side-button:nth-of-type(1)::after {
-  position: absolute;
-  content: "";
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.left-side-button:nth-of-type(2) {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.16);
-}
-
-.left-side-button:nth-of-type(3) {
-  border-bottom: 2px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease-in-out;
+  transform: translateY(var(--left-side-slider));
 }
 
 .hero__main-side {
@@ -213,8 +263,8 @@
 .right-side-inventory {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(6, 64px);
-  grid-template-rows: repeat(10, 64px);
+  grid-template-columns: repeat(6, 62px);
+  grid-template-rows: repeat(10, 62px);
   border: 1px solid rgba(255, 255, 255, 0.16);
   margin-bottom: 32px;
   overflow: hidden;
@@ -226,8 +276,8 @@
 
 .right-side-inventory__big-items {
   display: grid;
-  grid-template-columns: repeat(6, 64px);
-  grid-template-rows: repeat(10, 64px);
+  grid-template-columns: repeat(6, 62px);
+  grid-template-rows: repeat(10, 62px);
   position: absolute;
   width: 100%;
   height: 100%;
